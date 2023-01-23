@@ -65,6 +65,14 @@ export default defineComponent({
             label:Locale.uploadSpeed
           },
           {
+            value:"rateDownload",
+            label:Locale.downloadSpeed
+          },
+          {
+            value:"percentDone",
+            label:Locale.percentDone
+          },
+          {
             value:"activityDate",
             label:Locale.lastActivity
           },

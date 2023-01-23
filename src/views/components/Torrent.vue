@@ -17,19 +17,13 @@
           <span class="bloc fit">
             <!-- Using PNGs instead of SVGs to improve performance of the virtualscroll -->
             <img class="icon" :src="downIcon" :alt="Locale.downloaded">
-            {{ Utils.formatBytes(torrent.downloadedEver) }}
-            <template v-if="torrent.rateDownload>1">
-              ({{ Utils.formatBytes(torrent.rateDownload,2,true) }})
-            </template>
+            {{ Utils.formatBytes(torrent.rateDownload,2,true) }}
           </span>
 
           <!-- Upload -->
           <span class="bloc fit">
             <img class="icon" :src="upIcon" :alt="Locale.uploaded">
-            {{ Utils.formatBytes(torrent.uploadedEver) }}
-            <template v-if="torrent.rateUpload>1">
-              ({{ Utils.formatBytes(torrent.rateUpload,2,true) }})
-            </template>
+            {{ Utils.formatBytes(torrent.rateUpload,2,true) }}
           </span>
         </div>
 

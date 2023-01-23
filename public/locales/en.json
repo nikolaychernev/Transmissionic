@@ -109,6 +109,8 @@
     "rpcPath": "RPC path",
     "preferences": "Preferences",
     "uploadSpeed": "Upload speed",
+    "downloadSpeed": "Download speed",
+    "percentDone": "Percent done",
     "and": "and",
     "ago": "{0} ago",
     "lastActivity": "Last activity",
