@@ -36,9 +36,8 @@
             {{ Utils.formatBytes(totalSize) }} ·
             <span @click="openOrderPopover" tabindex="0" :aria-label="Locale.sort">
               <ion-icon :class="{rotate: !sharedState.reverse}" :ios="filterOutline" :md="filterSharp"></ion-icon>
-              {{ Locale.sort }}
             </span>
-            by {{ sharedState.orderByLabel.toLowerCase() }}
+            By {{ sharedState.orderByLabel.toLowerCase() }}
           </ion-label>
         </ion-list-header>
       </template>
