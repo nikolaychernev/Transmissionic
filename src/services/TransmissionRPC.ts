@@ -235,7 +235,10 @@ class TRPC {
         'eta',
         'recheckProgress',
         'queuePosition',
-        'downloadDir'
+        'downloadDir',
+        'peersSendingToUs',
+        'peersGettingFromUs',
+        'peersConnected'
       ]
     }
     if(refresh) {
@@ -370,7 +373,10 @@ class TRPC {
         'trackers',
         'trackerStats',
         'peers',
-        'recheckProgress'
+        'recheckProgress',
+        'peersSendingToUs',
+        'peersGettingFromUs',
+        'peersConnected'
       ]
     }
 

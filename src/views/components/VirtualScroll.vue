@@ -18,8 +18,8 @@
         </div>
       </template>
 
-      <template v-slot:default="{item}">
-        <slot :item="item"></slot>
+      <template v-slot:default="{item, index}">
+        <slot :item="item" :index="index"></slot>
       </template>
     </RecycleScroller>
     

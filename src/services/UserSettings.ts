@@ -9,6 +9,7 @@ const defaultSettings: Record<string,any> = {
   refreshInterval:5,
   timeout:10,
   orderBy:"addedDate",
+  orderByLabel:"Added date",
   reverse:true,
   selectedServer:0,
   useBits:true,

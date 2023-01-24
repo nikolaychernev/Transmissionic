@@ -35,17 +35,19 @@
             {{ LocaleController.getPlural("torrent",torrentSelectedList.length) }} ·
             {{ Utils.formatBytes(totalSize) }} ·
             <span @click="openOrderPopover" tabindex="0" :aria-label="Locale.sort">
-              <ion-icon :ios="filterOutline" :md="filterSharp"></ion-icon>
+              <ion-icon :class="{rotate: !sharedState.reverse}" :ios="filterOutline" :md="filterSharp"></ion-icon>
               {{ Locale.sort }}
             </span>
+            by {{ sharedState.orderByLabel.toLowerCase() }}
           </ion-label>
         </ion-list-header>
       </template>
 
-      <template v-slot:default="{item}">
+      <template v-slot:default="{item, index}">
         <Torrent 
           :attr-id="item.id"
           :torrent="item"
+          :index="index"
           v-on:switch="switchTorrentState"
           @click="torrentClick(item)"
           @contextmenu="longPress($event,item.id)" 
@@ -304,7 +306,7 @@ export default defineComponent({
       return () => TransmissionRPC.sessionStats ? TransmissionRPC.sessionStats.downloadSpeed: 0;
     },
     itemSize() {
-      return UserSettings.state.compactMode ? 46 : 72;
+      return UserSettings.state.compactMode ? 46 : 90;
     },
     totalSize: function (): any {
       return this.torrentSelectedList.reduce(function(sum, current) {
@@ -808,6 +810,11 @@ ion-fab-button[data-desc]::after {
   border-radius: 4px;
   color: var(--color);
   box-shadow: var(--box-shadow);
+}
+
+.rotate {
+  display: inline-block;
+  transform: rotate(180deg);
 }
 
 </style>

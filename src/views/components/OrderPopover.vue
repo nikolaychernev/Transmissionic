@@ -1,6 +1,6 @@
 <template>
   <ion-list lines="none">
-    <ion-item button v-for="order in privateState.orders" :key="order.value" @click="setOrder(order.value)" detail="false">
+    <ion-item button v-for="order in privateState.orders" :key="order.value" @click="setOrder(order)" detail="false">
       {{ order.label }}
       <ion-icon
         v-if="sharedState.orderBy==order.value"
@@ -96,12 +96,13 @@ export default defineComponent({
     };
   },
   methods: {
-    setOrder(order: string) {
-      if(order==this.sharedState.orderBy){
+    setOrder(order: any) {
+      if(order.value==this.sharedState.orderBy){
         UserSettings.setValue("reverse",!this.sharedState.reverse,true);
       }
       else {
-        UserSettings.setValue("orderBy",order,true);
+        UserSettings.setValue("orderBy",order.value,true);
+        UserSettings.setValue("orderByLabel",order.label,true);
         UserSettings.setValue("reverse",false,true);
       }
       popoverController.dismiss();

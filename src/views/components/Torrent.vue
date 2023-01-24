@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ torrent:true, condensed }" tabindex="0">
+  <div :class="{ torrent:true, even: index % 2 === 0, condensed }" tabindex="0">
     <div v-if="orderByPosition" class="order">
       <ion-icon :md="caretUpSharp" :ios="caretUpOutline" color="medium" @click="changeTorrentPosition($event,true)"></ion-icon>
       <ion-icon :md="caretDownSharp" :ios="caretDownOutline" color="medium" @click="changeTorrentPosition($event,false)"></ion-icon>
@@ -18,12 +18,14 @@
             <!-- Using PNGs instead of SVGs to improve performance of the virtualscroll -->
             <img class="icon" :src="downIcon" :alt="Locale.downloaded">
             {{ Utils.formatBytes(torrent.rateDownload,2,true) }}
+            ({{ torrent.peersSendingToUs }}/{{ torrent.peersConnected }})
           </span>
 
           <!-- Upload -->
           <span class="bloc fit">
             <img class="icon" :src="upIcon" :alt="Locale.uploaded">
             {{ Utils.formatBytes(torrent.rateUpload,2,true) }}
+            ({{ torrent.peersGettingFromUs }}/{{ torrent.peersConnected }})
           </span>
         </div>
 
@@ -94,7 +96,7 @@ import { Emitter } from "../../services/Emitter";
 import { UserSettings } from '../../services/UserSettings';
 
 export default defineComponent({
-  props: ['torrent'],
+  props: ['torrent', 'index'],
   components: {
     IonIcon,
     IonProgressBar,
@@ -157,9 +159,17 @@ img.icon {
 
 .torrent {
   text-align:left;
-  height:72px;
-  padding:5px;
+  height:90px;
+  padding:15px 5px;
   display: flex;
+}
+
+.torrent.even {
+  background-color: #1f1f1f;
+}
+
+body:not(.dark) .torrent.even {
+  background-color: #f4f5f8;
 }
 
 .torrent.condensed {
